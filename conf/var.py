@@ -1,0 +1,2 @@
+DB_NAME = "ss"
+MAIN_PAGE = "MAIN"
