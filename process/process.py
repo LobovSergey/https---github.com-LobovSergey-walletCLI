@@ -1,4 +1,4 @@
-from classes.operative_classes.menu import MainMenuCLI
+from classes.operative_classes.menu.menu import MainMenuCLI
 
 
 def main_process():

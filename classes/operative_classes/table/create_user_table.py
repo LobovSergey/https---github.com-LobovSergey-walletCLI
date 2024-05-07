@@ -5,7 +5,7 @@ from conf.var import MAIN_PAGE
 class TableUserCreate(Table):
 
     def _user_append(self, login, password):
-        page = self.table[MAIN_PAGE]
+        page = self.table[self.table.sheetnames[0]]
         page.append([login, password])
 
     def _userlist_create(self, login):

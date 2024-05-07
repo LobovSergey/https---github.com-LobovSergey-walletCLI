@@ -1,9 +1,13 @@
+from classes.operative_classes.table.main_page_table import MainPage
+
 from process.process import main_process
 
 
 def start_app() -> None:
+    table = MainPage()
+    table.main_list_create()
     main_process()
 
 
-# if __name__ == "__main__":
-#     start_app()
+if __name__ == "__main__":
+    start_app()

@@ -1,14 +1,13 @@
-from ..abc_classes.menu_abc import MenuABC
-from menu_auth import MenuAuthenticationCLI
-from menu_register import MenuRegistration
+from classes.operative_classes.menu.menu_auth import MenuAuthentication
+from classes.operative_classes.menu.menu_register import MenuRegistration
 
 
-class MainMenuCLI(MenuABC):
+class MainMenuCLI:
 
     def __make_choise(self, choice):
         if choice == 1:
-            MenuRegistration.registration()
-        return MenuAuthenticationCLI.authentication()
+            MenuRegistration().registration()
+        MenuAuthentication().authentication()
 
     def __choise_auth(self):
         while True:
@@ -20,6 +19,7 @@ class MainMenuCLI(MenuABC):
             )
             if choice in [1, 2]:
                 break
+            print("Некорректный выбор. Повторите еще раз")
         self.__make_choise(choice)
 
     def __greetengs_user(self):
