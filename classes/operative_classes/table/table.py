@@ -1,6 +1,5 @@
-import os
 from openpyxl import Workbook
-from conf.var import DB_NAME
+from conf.var import DB_NAME, MAIN_PAGE, USERLIST_TITLES
 
 
 class Table:
@@ -11,7 +10,16 @@ class Table:
     def _save(self):
         self.table.save(f"src/{DB_NAME}.xls")
 
-    # def create_table(self):
-    #     main_page = MainPage()
-    #     main_page.main_list_create()
-    #     self._save()
+    def _user_append(self, login, password):
+        page = self.table[MAIN_PAGE]
+        page.append([login, password])
+
+    def _userlist_create(self, login):
+        self.table.create_sheet(login)
+        page = self.table[login]
+        page.append(USERLIST_TITLES)
+
+    def user_create(self, login, password):
+        self._user_append(login, password)
+        self._userlist_create(login)
+        self._save()

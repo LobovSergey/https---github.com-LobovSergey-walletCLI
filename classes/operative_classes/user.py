@@ -1,7 +1,6 @@
-
 from dataclasses import dataclass
 
-from classes.operative_classes.table.create_user_table import TableUserCreate
+from classes.operative_classes.table.main_page_table import MainPage
 
 
 @dataclass
@@ -12,5 +11,5 @@ class User:
     def __str__(self) -> str:
         return self.login
 
-    def create(self):
-        TableUserCreate().user_create(login=self.login, password=self.password)
+    def create(self, table: MainPage):
+        table.user_create(login=self.login, password=self.password)

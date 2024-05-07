@@ -6,7 +6,7 @@ from process.process import main_process
 def start_app() -> None:
     table = MainPage()
     table.main_list_create()
-    main_process()
+    main_process(table)
 
 
 if __name__ == "__main__":
