@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 import hashlib
-from os import path
 from classes.operative_classes.table.main_page_table import MainPage
 from classes.operative_classes.user import User
 from time import sleep
@@ -14,7 +13,7 @@ class MenuRegistration:
         b_pass = password.encode()
         return hashlib.sha256(b_pass).hexdigest()
 
-    def registration(self):
+    def registration(self) -> None:
         print("-Регистрация-")
         while True:
             login = input("Ведите логин:\n")

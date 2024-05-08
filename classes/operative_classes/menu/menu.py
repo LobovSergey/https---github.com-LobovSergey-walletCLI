@@ -1,25 +1,25 @@
 from dataclasses import dataclass
+from typing import Union
+from openpyxl import Workbook
 from classes.operative_classes.menu.menu_auth import MenuAuthentication
 from classes.operative_classes.menu.menu_register import MenuRegistration
-from classes.operative_classes.table.main_page_table import MainPage
 
 
 @dataclass
 class MainMenuCLI:
-    table: MainPage
+    table: Workbook
 
-    def __greetengs_user(self):
+    def __greetengs_user(self) -> None:
         print("Добро пожаловать!\n")
 
-    def __make_choise(self, choice):
+    def __make_choise(self, choice: int) -> Union[str, bool]:
         if choice == 0:
             return False
         elif choice == 1:
             MenuRegistration(self.table).registration()
-        MenuAuthentication(self.table).authentication()
-        return True
+        return MenuAuthentication(self.table).authentication()
 
-    def __choise_auth(self):
+    def __choise_auth(self) -> Union[str, bool]:
         while True:
             choice = int(
                 input(
@@ -32,6 +32,6 @@ class MainMenuCLI:
             print("Некорректный выбор. Повторите еще раз")
         return self.__make_choise(choice)
 
-    def start_menu(self) -> None:
+    def start_menu(self) -> Union[str, bool]:
         self.__greetengs_user()
         return self.__choise_auth()

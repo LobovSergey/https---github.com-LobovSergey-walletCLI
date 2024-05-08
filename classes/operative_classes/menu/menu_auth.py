@@ -12,7 +12,7 @@ class MenuAuthentication:
         b_pass = password.encode()
         return hashlib.sha256(b_pass).hexdigest()
 
-    def _find_user(self, login, password):
+    def _find_user(self, login: str, password: str):
         main_page = self.table.table[MAIN_PAGE]
         login_col = main_page["A"]
         index = -1
@@ -24,7 +24,7 @@ class MenuAuthentication:
             return True
         return False
 
-    def authentication(self):
+    def authentication(self) -> str:
         print("-Авторизация-")
         while True:
             login = input("Ведите логин:\n")
@@ -32,6 +32,5 @@ class MenuAuthentication:
             if self._find_user(login, password):
                 break
             print("Неверный логин или пароль. Пропробуйте снова")
-        page = self.table.table[login]
         print("Вы в системе")
-        return page
+        return login
