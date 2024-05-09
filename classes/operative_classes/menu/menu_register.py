@@ -14,7 +14,7 @@ class MenuRegistration:
         return hashlib.sha256(b_pass).hexdigest()
 
     def registration(self) -> None:
-        print("-Регистрация-")
+        print("\n--Регистрация--\n")
         while True:
             login = input("Ведите логин:\n")
             if self.table.check_login(login):

@@ -1,7 +1,9 @@
+from dataclasses import dataclass
 from openpyxl import Workbook
 from conf.var import DB_NAME, MAIN_PAGE, USERLIST_TITLES
 
 
+@dataclass
 class Table:
 
     def __init__(self) -> None:

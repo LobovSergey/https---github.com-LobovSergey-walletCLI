@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 import hashlib
+from typing import Union
 from classes.operative_classes.table.main_page_table import MainPage
 from conf.var import MAIN_PAGE
+from time import sleep
 
 
 @dataclass
@@ -24,13 +26,21 @@ class MenuAuthentication:
             return True
         return False
 
-    def authentication(self) -> str:
-        print("-Авторизация-")
+    def authentication(self) -> Union[str, False]:
+        print("\n--Авторизация--\n")
         while True:
             login = input("Ведите логин:\n")
             password = input("Ведите пароль:\n")
             if self._find_user(login, password):
                 break
-            print("Неверный логин или пароль. Пропробуйте снова")
-        print("Вы в системе")
+            repeat = None
+            while repeat != "1":
+                repeat = input(
+                    "Неверный логин или пароль.\n1 - Повторить попытку\n0 - Вернуться в меню входа"
+                )
+                if repeat == "0":
+                    return False
+
+        print(f"\nДобро пожаловать, {login}")
+        sleep(1)
         return login
