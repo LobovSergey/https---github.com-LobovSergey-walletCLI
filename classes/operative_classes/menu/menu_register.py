@@ -8,12 +8,15 @@ from time import sleep
 @dataclass
 class MenuRegistration:
     table: MainPage = None
+    """Класс регистрации пользователя"""
 
     def _decode_pass(self, password: str) -> str:
+        """Кодирование пароля для хранения в БД"""
         b_pass = password.encode()
         return hashlib.sha256(b_pass).hexdigest()
 
     def registration(self) -> None:
+        """Основное меню регистрации"""
         print("\n--Регистрация--\n")
         while True:
             login = input("Ведите логин:\n")

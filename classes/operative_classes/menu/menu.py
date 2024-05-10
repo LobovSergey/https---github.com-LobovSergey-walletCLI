@@ -9,10 +9,21 @@ from classes.operative_classes.menu.menu_register import MenuRegistration
 class MainMenuCLI:
     table: Workbook
 
+    """Главное меню входа
+    Здесь вы можете осуществитель авторизацию, регистрацию и завершение работы приложения.
+    
+    ВАЖНО: После завершения экземпляр MainPage() будет удален и данные в БД ,при новом запуске, будут перезаписаны.
+    (!) Здесь можно поставить доп. проверку на то, чтобы файл удалял старые данные при новом запусе приложении."""
+
     def __greetengs_user(self) -> None:
+        """Приветствие"""
         print("\n--Меню входа--\n")
 
     def __make_choise(self, choice: int) -> Union[str, bool]:
+        """Логика выбора
+        После отказа в аутентификации можно вернутся к логике регистрации.
+        На выходе будет либо отказ в доступе, либо логин пользователя (login), по которому будет осуществен переход к странице опрераций конткретного пользователя
+        """
         if choice == "0":
             return None
         elif choice == "1":
@@ -20,6 +31,7 @@ class MainMenuCLI:
         return MenuAuthentication(self.table).authentication()
 
     def __choise_auth(self) -> Union[Union[str, bool], None]:
+        """Меню входа"""
         while True:
             choice = input(
                 "Если вы хотите зарегистрироваться или войти в систему,"
@@ -31,6 +43,9 @@ class MainMenuCLI:
         return self.__make_choise(choice)
 
     def start_menu(self) -> Union[str, bool]:
+        """Логика  меню входа
+        Будет работать до тех пор, пока пользователь не закроет приложение, либо принудительно через консоль через ctrl+C не вырубит процесс
+        """
         self.__greetengs_user()
         while True:
             response = self.__choise_auth()
