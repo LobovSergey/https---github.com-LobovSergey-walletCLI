@@ -5,9 +5,7 @@ from process.process import main_process
 
 def start_app() -> None:
     """Старт приложения"""
-    table = MainPage()
-    table.main_list_create()
-    main_process(table)
+    main_process()
 
 
 if __name__ == "__main__":
