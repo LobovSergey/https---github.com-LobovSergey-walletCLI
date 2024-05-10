@@ -66,7 +66,7 @@ class MenuUser:
         self._add_value_at_balance(value=value, operand=flag)
         table.save()
 
-    def _get_array(self, table: Workbook) -> NDArray:
+    def _get_array(self, table: MainPage) -> NDArray:
         """Numpy array для передачи данных в pandas"""
         return np.array([val for val in table[self.user].values])
 
@@ -96,9 +96,9 @@ class MenuUser:
                 return
             elif choise in ["1", "2", "3"]:
                 searched = input("Искомое значение:\n")
-                if choise != "2":
-                    choise = int(choise)
-                print(frame[frame[USERLIST_TITLES[int(choise) - 1]] == searched])
+                print(
+                    frame.loc[frame[USERLIST_TITLES[int(choise) - 1]].isin([searched])]
+                )
             else:
                 print("Некорректный выбор. Попробуйте еще раз")
 

@@ -12,7 +12,7 @@ class Table:
 
     def save(self) -> None:
         """Переопределение базового .save() для присвоения имени файла"""
-        self.table.save(filename=DB_NAME)
+        self.table.save(f"{DB_NAME}.xlsx")
 
     def _user_append(self, login: str, password: str) -> None:
         """Внутренний метод создания пользователя на главной странице. Вызывается только в том случае, если пользователь прошел регистрацию"""
